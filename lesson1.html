@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>التقويم الختامي – الدرس الأول</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* VOICE: هادئ ومشجّع، بلسان المعلمة للطالبة
+   IDEA: نفس شريحة الدرس الأول: إطار مخطط بالأخضر الزيتي وبطاقات بحواف مستديرة
+   PICTURE: مصباح الفكرة بعلامة صح، وبطاقة السؤال
+   COLOUR and TYPE: أخضر زيتي #4f8a80، نعناعي، أبيض وردي، أصفر المصباح – Tajawal
+   LAYOUT: عمود واحد هادئ، ترويسة ثم شاشة واحدة في كل مرة */
+:root{color-scheme:light;--teal:#569a8f;--deep:#3f7a70;--mint:#8fc0b5;--soft:#dfeae6;--card:#e6f1ef;--bg:#ffffff;--ink:#1f2a28;--muted:#5d6b68;--sun:#f4c84a;--bad:#c0504d}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:repeating-linear-gradient(90deg,#89bcb0 0 34px,#7ab0aa 34px 68px);color:var(--ink);font:17px/1.6 Tajawal,"Segoe UI",Tahoma,sans-serif;overflow-x:clip;min-height:100vh;display:flex;flex-direction:column}
+.stripe{display:none}
+main{flex:1;width:calc(100% - 24px);max-width:860px;margin:clamp(14px,3vw,30px) auto;padding:22px max(4vw,14px) 30px;background:var(--bg);border-radius:28px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.head{background:var(--teal);color:#fff;border-radius:18px;padding:14px 22px;display:flex;flex-direction:column;gap:4px;align-items:flex-start;box-shadow:0 4px 0 var(--deep)}
+.head h1{margin:0;font-size:clamp(24px,4.4vw,34px);font-weight:900;line-height:1.15}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:700;white-space:nowrap}
+.lesson{margin:12px 0 0;background:#fff;border:2.5px solid var(--deep);border-radius:16px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;justify-content:space-between}
+.lesson b{font-size:clamp(19px,3vw,22px);color:var(--deep)}.sub{font-size:clamp(14px,2.6vw,17px);font-weight:700;white-space:nowrap;opacity:.95}
+.lesson span{color:var(--muted);font-weight:700}
+.who{display:none;margin-top:10px;gap:8px;flex-wrap:wrap}
+.who.on{display:flex}
+.who .chip{background:var(--soft);color:var(--deep);border-color:var(--teal)}
+.panel{margin-top:18px;background:var(--card);border:2.5px solid #4d5b58;border-radius:22px;padding:clamp(18px,3.5vw,32px)}
+.hidden{display:none!important}
+h2{margin:0 0 6px;white-space:nowrap;font-size:clamp(18px,5vw,28px);font-weight:800;line-height:1.3}
+.lead{margin:0 0 18px;color:#33413e}
+label{display:block;font-weight:800;margin:12px 0 6px}
+input{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:2px solid var(--teal);border-radius:12px;background:#fff;color:var(--ink)}
+input:focus,button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px}
+.err{color:var(--bad);font-weight:700;min-height:1.6em;margin:8px 0 0}
+.btn{font:inherit;font-weight:800;font-size:18px;min-height:50px;padding:10px 26px;border-radius:999px;border:2.5px solid var(--deep);background:var(--teal);color:#fff;cursor:pointer;box-shadow:0 4px 0 var(--deep);transition:transform .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--deep)}
+.btn.ghost{background:#fff;color:var(--deep)}
+.btn:disabled{opacity:.45;cursor:default}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:20px}
+.objs{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.objs li{background:#fff;border:2px solid #4d5b58;border-radius:14px;padding:10px 10px 10px 12px;display:flex;gap:10px;align-items:center;font-weight:700;font-size:15px;line-height:1.35}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800}
+.bar{height:12px;background:#fff;border:2px solid var(--deep);border-radius:999px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,#89bcb0 0 10px,#7ab0aa 10px 20px);transition:width .4s}
+.qtop{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin-bottom:10px}
+.tag{background:var(--teal);color:#fff;border-radius:999px;padding:4px 14px;font-weight:800;font-size:15px}
+.count{font-weight:800;color:var(--deep)}
+.qtext{background:#fff;border:2.5px solid #4d5b58;border-radius:16px;padding:16px 18px;font-size:clamp(19px,3vw,22px);font-weight:800;line-height:1.5;margin-bottom:14px}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;font-weight:700;font-size:17px;text-align:start;min-height:54px;padding:10px 14px;background:#fff;color:var(--ink);border:2.5px solid var(--teal);border-radius:14px;cursor:pointer;display:flex;gap:12px;align-items:center}
+.opt .l{flex:none;width:32px;height:32px;border-radius:50%;border:2px solid var(--teal);display:grid;place-items:center;font-weight:800;color:var(--deep)}
+.opt:hover:not(:disabled){background:var(--soft)}
+.opt.ok{background:#d9efe5;border-color:#2f8a5f}.opt.ok .l{background:#2f8a5f;border-color:#2f8a5f;color:#fff}
+.opt.no{background:#f7dede;border-color:var(--bad)}.opt.no .l{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:disabled{cursor:default}
+.fb{margin-top:12px;border-radius:14px;padding:10px 14px;font-weight:700;display:none}
+.fb.on{display:block}
+.fb.good{background:#e3f3ea;border:2px solid #2f8a5f}
+.fb.bad{background:#fbe9e9;border:2px solid var(--bad)}
+.result{text-align:center}
+.bulb{width:150px;height:150px;margin:0 auto}
+.score{font-size:clamp(46px,9vw,64px);font-weight:900;color:var(--deep);line-height:1;margin:6px 0}
+.pct{font-weight:800;color:var(--muted)}
+.cong{background:var(--teal);color:#fff;border-radius:16px;padding:14px 18px;font-size:clamp(20px,3.4vw,25px);font-weight:800;margin:16px 0;box-shadow:0 4px 0 var(--deep)}
+.review{list-style:none;padding:0;margin:0;display:grid;gap:8px;text-align:start}
+.review li{background:#fff;border:2px solid #4d5b58;border-radius:12px;padding:8px 12px;display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700;font-size:15px}
+.st{flex:none;border-radius:999px;padding:2px 12px;font-size:14px;color:#fff;white-space:nowrap}
+.st.y{background:#2f8a5f}.st.n{background:var(--bad)}
+.value{margin-top:18px;background:var(--teal);color:#fff;text-align:center;border-radius:16px;padding:12px;font-weight:800;font-size:clamp(17px,2.8vw,20px);box-shadow:0 4px 0 var(--deep)}
+footer{text-align:center;color:#fff;font-size:13px;font-weight:700;padding:10px 0 12px}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.conf i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;animation:fall 2.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media(prefers-reduced-motion:reduce){.conf{display:none}.bar i{transition:none}}
+@media(max-width:600px){.row{grid-template-columns:minmax(0,1fr)}.actions{justify-content:stretch}.actions .btn{flex:1}.head{padding:14px 16px}}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<main>
+  <header class="head">
+    <h1>المهارات الرقمية</h1>
+    <div class="sub">ثاني متوسط – الفصل الدراسي الثاني</div>
+  </header>
+  <div class="lesson"><b>الوحدة الأولى: جمع المعلومات</b></div>
+  <div class="lesson"><b>الدرس الأول: قواعد البيانات والنماذج</b></div>
+  <div class="who" id="who"><span class="chip" id="whoName"></span><span class="chip" id="whoClass"></span></div>
+
+  <section class="panel" id="start">
+    <h2>التقويم الختامي للدرس الأول</h2>
+    <form id="f" novalidate>
+      <div class="row">
+        <div><label for="name">اسم الطالبة</label><input id="name" autocomplete="name" placeholder="مثال: ريم محمد"></div>
+        <div><label for="cls">الفصل</label><input id="cls" placeholder="مثال: ٣/٢"></div>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="actions"><button class="btn" type="submit">ابدئي التقويم</button></div>
+    </form>
+  </section>
+
+  <section class="panel hidden" id="quiz" aria-live="polite">
+    <div class="bar"><i id="bar"></i></div>
+    <div class="qtop"><span class="tag" id="tag"></span><span class="count" id="count"></span></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div class="fb" id="fb"></div>
+    <div class="actions"><button class="btn" id="next" disabled>التالي</button></div>
+  </section>
+
+  <section class="panel result hidden" id="res">
+    <svg class="bulb" viewBox="0 0 160 160" aria-hidden="true">
+      <g stroke="#2b2b2b" stroke-width="5" stroke-linecap="round"><path d="M80 8v14M30 26l10 10M130 26l-10 10M12 74h14M134 74h14"/></g>
+      <path d="M80 30c-26 0-44 19-44 42 0 15 8 25 15 33 5 6 7 11 7 17h44c0-6 2-11 7-17 7-8 15-18 15-33 0-23-18-42-44-42z" fill="#f4c84a" stroke="#2b2b2b" stroke-width="5"/>
+      <path d="M58 60c4-10 12-15 22-16" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+      <path d="M60 78l14 14 27-30" fill="none" stroke="#3f9a5a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="58" y="122" width="44" height="10" rx="4" fill="#7fb7a8" stroke="#2b2b2b" stroke-width="4"/>
+      <rect x="62" y="132" width="36" height="10" rx="4" fill="#569a8f" stroke="#2b2b2b" stroke-width="4"/>
+      <path d="M70 146h20" stroke="#2b2b2b" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <h2>النتيجة النهائية</h2>
+    <div class="score" id="score"></div>
+    <div class="pct" id="pct"></div>
+    <div class="cong" id="cong"></div>
+    <ul class="review" id="review"></ul>
+    <div class="actions"><button class="btn ghost" id="again">إعادة التقويم</button></div>
+  </section>
+
+  <div class="value">ونجمع البيانات بأمانة، ونحمي خصوصية الآخرين.</div>
+</main>
+<footer>© مايند | موارد إبداعية لتعليم مُلهم</footer>
+<div class="stripe"></div>
+<div class="conf" id="conf"></div>
+
+<script>
+{
+const Q=[
+ {obj:"نفرّق بين البيانات والمعلومات",q:"كتبت مها «١٧ شوال» وحدها بدون أي سياق، ثم كتبت «تاريخ ميلاد سعد: ١٧ شوال». ماذا تُعدّ كل منهما؟",
+  o:["الأولى بيانات، والثانية معلومات","الأولى معلومات، والثانية بيانات","كلتاهما معلومات","كلتاهما بيانات"],
+  e:"البيانات حقائق خام بلا سياق، وعندما ننظّمها ونضعها في سياق معيّن تصبح معلومات."},
+ {obj:"ننظّمها في قاعدة بيانات",q:"قاعدة البيانات هي:",
+  o:["نظام يمكن من خلاله تنظيم البيانات وإدارتها","نظام لجمع البيانات فقط","جدول واحد فريد يحتوي على البيانات","برنامج لكتابة النصوص وتنسيقها"],
+  e:"قاعدة البيانات نظام لتنظيم البيانات وإدارتها، وتتكوّن من جدول أو عدة جداول، ومن أبسط أمثلتها دفتر العناوين."},
+ {obj:"ننشئ نموذجًا إلكترونيًا",q:"بعد تسجيل الدخول إلى نماذج مايكروسوفت (Forms)، ما الخيار الذي نضغطه لإنشاء استطلاع جديد؟",
+  o:["نموذج جديد (New Form)","إضافة جديد (Add new)","معاينة (Preview)","إرسال (Share)"],
+  e:"نضغط «نموذج جديد» ثم نكتب عنوان النموذج، أما «إضافة جديد» فلإضافة سؤال داخل النموذج."},
+ {obj:"نختار الأسئلة والقيود المناسبة",q:"تريدين أن يكتب المستجيب عمره، بشرط أن يكون العمر أكبر من ١٢. ما الإعداد المناسب؟",
+  o:["سؤال «نص» مع قيود «أكبر من ١٢»","سؤال «تقييم» بالنجوم","سؤال «ليكرت»","سؤال «تحميل ملف»"],
+  e:"نختار نوع السؤال «نص»، ثم من «مزيد من الإعدادات» نختار «قيود» وبعدها «أكبر من» ونكتب ١٢."},
+ {obj:"نعاين النموذج ونشاركه",q:"تريدين أن تمسح زميلاتكِ رابط النموذج بكاميرا الجوال مباشرة. أي طريقة مشاركة تختارين؟",
+  o:["شفرة الاستجابة السريعة (QR)","نسخ المقطع البرمجي لتضمينه في موقع","زر المعاينة (Preview)","تفعيل خيار «مطلوب»"],
+  e:"رموز QR مربعات شريطية تُمسح بالجوال لمشاركة الروابط والبيانات."},
+ {obj:"نصدّر الاستجابات إلى إكسل",q:"لتصدير استجابات النموذج إلى برنامج مايكروسوفت إكسل نضغط على:",
+  o:["الاستجابات (Responses) ثم فتح في Excel","إرسال (Share) ثم نسخ الرابط","معاينة (Preview) ثم أيقونة الجوال","إضافة جديد (Add new) ثم تقييم"],
+  e:"من تبويب «الاستجابات» نختار «فتح في Excel» فتظهر الاستجابات في جدول بيانات يمكن تنسيقه وتحليله."},
+ {obj:"نجمع البيانات بأمانة ونحمي الخصوصية",q:"وصلتكِ استجابات النموذج وفيها أرقام جوالات زميلاتكِ. ما التصرف الصحيح؟",
+  o:["أحفظها ولا أشاركها مع أحد دون إذن أصحابها","أنشرها في مجموعة الصف ليستفيد الجميع","أرسلها لصديقتي فقط","أضعها في عرض تقديمي أمام الطالبات"],
+  e:"البيانات الشخصية تُحمى ولا تُشارك دون إذن، كما تنص الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)."}
+];
+const L=["أ","ب","ج","د"],ar=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
+const $=id=>document.getElementById(id);
+let i=0,ans=[],order=[],who={n:"",c:""};
+try{$("name").value=localStorage.getItem("tq-n")||"";$("cls").value=localStorage.getItem("tq-c")||""}catch(e){}
+const show=s=>["start","quiz","res"].forEach(x=>$(x).classList.toggle("hidden",x!==s));
+const shuffle=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
+function render(){
+  const x=Q[i];order=shuffle([0,1,2,3]);
+  $("bar").style.width=(i/Q.length*100)+"%";
+  $("tag").textContent="التقويم الختامي";
+  $("count").textContent="السؤال "+ar(i+1)+" من "+ar(Q.length);
+  $("qtext").textContent=x.q;
+  $("opts").innerHTML=order.map((o,k)=>`<button class="opt" data-o="${o}"><span class="l">${L[k]}</span><span>${x.o[o]}</span></button>`).join("");
+  $("fb").className="fb";$("fb").textContent="";
+  $("next").disabled=true;$("next").textContent=i===Q.length-1?"عرض النتيجة":"التالي";
+}
+$("opts").addEventListener("click",e=>{
+  const b=e.target.closest(".opt");if(!b||b.disabled)return;
+  const pick=+b.dataset.o,ok=pick===0;ans[i]=ok;
+  document.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(+o.dataset.o===0)o.classList.add("ok")});
+  if(!ok)b.classList.add("no");
+  $("fb").className="fb on "+(ok?"good":"bad");
+  $("fb").textContent=(ok?"إجابة صحيحة، أحسنتِ! ":"إجابة غير صحيحة. ")+Q[i].e;
+  $("next").disabled=false;$("next").focus();
+});
+$("next").addEventListener("click",()=>{i++;if(i<Q.length)render();else result()});
+$("f").addEventListener("submit",e=>{
+  e.preventDefault();
+  who.n=$("name").value.trim();who.c=$("cls").value.trim();
+  if(!who.n||!who.c){$("err").textContent="فضلاً اكتبي اسمكِ وفصلكِ قبل البدء.";(who.n?$("cls"):$("name")).focus();return}
+  $("err").textContent="";
+  try{localStorage.setItem("tq-n",who.n);localStorage.setItem("tq-c",who.c)}catch(e){}
+  $("whoName").textContent="الطالبة: "+who.n;$("whoClass").textContent="الفصل: "+who.c;$("who").classList.add("on");
+  i=0;ans=[];show("quiz");render();
+});
+function result(){
+  $("bar").style.width="100%";
+  const s=ans.filter(Boolean).length,p=Math.round(s/Q.length*100);
+  $("score").textContent=ar(s)+" / "+ar(Q.length);
+  $("pct").textContent="نسبة الإتقان "+ar(p)+"٪";
+  const first=who.n.split(/\s+/)[0];
+  $("cong").textContent=p===100?`مبارك يا ${first}! أتقنتِ جميع أهداف الدرس، أنتِ مبدعة 🌟`
+    :p>=70?`أحسنتِ يا ${first}! أداء رائع، راجعي السؤال الذي أخطأتِ فيه لتكتمل الصورة.`
+    :p>=50?`جميل يا ${first}، أنتِ على الطريق الصحيح. راجعي الأسئلة المحددة بالأحمر وحاولي مرة أخرى.`
+    :`لا بأس يا ${first}، كل محاولة تعلُّم. راجعي الدرس ثم أعيدي التقويم، وأنا واثقة بكِ.`;
+  $("review").innerHTML=Q.map((x,k)=>`<li><span>السؤال ${ar(k+1)}</span><span class="st ${ans[k]?"y":"n"}">${ans[k]?"صحيحة":"خاطئة"}</span></li>`).join("");
+  show("res");
+  if(p>=70&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+    const c=["#569a8f","#89bcb0","#f4c84a","#3f7a70","#e6f1ef"];
+    $("conf").innerHTML=Array.from({length:70},()=>`<i style="left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*5)]};animation-delay:${Math.random()*0.9}s"></i>`).join("");
+    setTimeout(()=>{$("conf").innerHTML=""},4000);
+  }
+  scrollTo({top:0,behavior:"smooth"});
+}
+$("again").addEventListener("click",()=>{$("who").classList.remove("on");show("start");$("bar").style.width="0"});
+}
+</script>
+</body>
+</html>
